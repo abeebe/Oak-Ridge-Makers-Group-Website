@@ -440,6 +440,101 @@ footer a { color: #fff; }
     .hero-actions .btn { width: 100%; }
 }
 
-/* Kit embed sits on the green sign-up band */
+/* Kit embed sits on the green sign-up band.
+   Kit injects its own stylesheet and inline styles on the input and button,
+   so these rules are scoped to the embed and use !important where Kit sets inline values. */
 .signup-embed { min-width: 0; }
-.signup-embed form { max-width: 100%; }
+.signup-embed .formkit-form {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-family: var(--font-body) !important;
+}
+.signup-embed .formkit-form [data-style="clean"] { padding: 0 !important; }
+.signup-embed .formkit-fields {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin: 0 !important;
+}
+.signup-embed .formkit-field {
+    flex: 1 1 240px !important;
+    margin: 0 !important;
+    min-width: 0;
+}
+.signup-embed .formkit-input {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 3.1rem;
+    font-family: var(--font-body) !important;
+    font-size: 1.05rem !important;
+    color: var(--ink) !important;
+    background: var(--cream) !important;
+    border: 2px solid transparent !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 0.95rem !important;
+    box-shadow: none !important;
+}
+.signup-embed .formkit-input::placeholder { color: var(--muted) !important; opacity: 1; }
+.signup-embed .formkit-input:focus {
+    border-color: var(--amber) !important;
+    outline: none !important;
+}
+.signup-embed .formkit-submit {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    min-height: 3.1rem;
+    font-family: var(--font-display) !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: var(--amber-ink) !important;
+    background: var(--amber) !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.signup-embed .formkit-submit > span {
+    display: block;
+    padding: 0.8rem 1.6rem !important;
+}
+.signup-embed .formkit-submit:hover,
+.signup-embed .formkit-submit:focus-visible {
+    background: var(--amber-dark) !important;
+    transform: translateY(-1px);
+}
+.signup-embed .formkit-submit:focus-visible {
+    outline: 3px solid #fff !important;
+    outline-offset: 2px;
+}
+.signup-embed .formkit-alert {
+    margin: 0.75rem 0 0 !important;
+    border-radius: 6px !important;
+    font-size: 0.95rem !important;
+}
+.signup-embed .formkit-alert-success {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 0 !important;
+    border-left: 3px solid var(--amber) !important;
+    color: #fff !important;
+}
+/* "Built with Kit" badge: kept, but light and quiet on the green band */
+.signup-embed .formkit-powered-by-convertkit-container {
+    justify-content: flex-start !important;
+    margin: 0.75rem 0 0 !important;
+}
+.signup-embed .formkit-powered-by-convertkit {
+    margin: 0 !important;
+    filter: invert(1) brightness(1.1);
+    opacity: 0.55;
+    transform: scale(0.85);
+    transform-origin: left center;
+    transition: opacity 0.2s ease;
+}
+.signup-embed .formkit-powered-by-convertkit:hover { opacity: 0.85; }
+
+@media (max-width: 520px) {
+    .signup-embed .formkit-submit { flex: 1 1 100% !important; }
+}
