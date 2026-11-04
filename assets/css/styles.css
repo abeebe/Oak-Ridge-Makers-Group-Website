@@ -439,3 +439,7 @@ footer a { color: #fff; }
     .wishlist { padding: 1.5rem; }
     .hero-actions .btn { width: 100%; }
 }
+
+/* Kit embed sits on the green sign-up band */
+.signup-embed { min-width: 0; }
+.signup-embed form { max-width: 100%; }

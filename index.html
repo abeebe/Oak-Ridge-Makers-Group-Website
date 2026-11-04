@@ -195,25 +195,10 @@
                     <h2 id="updates-title">Never miss a meeting</h2>
                     <p>Get meeting dates, events and makerspace news by email. Unsubscribe anytime.</p>
                 </div>
-                <!--
-                  EMAIL SIGN-UP SLOT (Kit, kit.com)
-                  To turn it on: in Kit, create a form, copy its form ID (the number in the form's URL),
-                  and put it in place of KIT_FORM_ID in the action below.
-                  Or replace this whole <form> with the embed code Kit gives you.
-                  Until then, the form shows a "coming soon" note instead of submitting.
-                -->
-                <form class="signup-form" id="signup-form" action="https://app.kit.com/forms/KIT_FORM_ID/subscriptions" method="post">
-                    <div class="field">
-                        <label for="signup-name">First name</label>
-                        <input id="signup-name" name="fields[first_name]" type="text" autocomplete="given-name">
-                    </div>
-                    <div class="field">
-                        <label for="signup-email">Email</label>
-                        <input id="signup-email" name="email_address" type="email" autocomplete="email" required>
-                    </div>
-                    <button class="btn btn-amber" type="submit">Send me updates</button>
-                    <p class="signup-status" id="signup-status" role="status" hidden></p>
-                </form>
+                <!-- Email sign-up form, served by Kit (kit.com). Kit renders the form where this script sits. -->
+                <div class="signup-embed">
+                    <script async data-uid="238c95180a" src="https://oak-ridge-makers.kit.com/238c95180a/index.js"></script>
+                </div>
             </div>
         </section>
 
@@ -243,19 +228,5 @@
             </nav>
         </div>
     </footer>
-
-    <script>
-      // Until a Kit form ID is set, show a friendly note instead of posting to a broken address.
-      (function () {
-        var form = document.getElementById('signup-form');
-        var status = document.getElementById('signup-status');
-        if (!form || form.getAttribute('action').indexOf('KIT_FORM_ID') === -1) return;
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          status.hidden = false;
-          status.textContent = 'Email updates are coming soon. For now, join us on Discord or email info@ormakers.org.';
-        });
-      })();
-    </script>
 </body>
 </html>
